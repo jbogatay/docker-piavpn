@@ -1,5 +1,4 @@
 docker-piavpn
-
 ================
 
 Ubuntu:1404 based Privateinternetaccess.com vpn with torrents/proxy (openvpn, deluged, deluge-web, dante-server)
@@ -22,7 +21,7 @@ Complete run command with all options
         jbogatay/piavpn
 
 
-Change directory mappings as appropriate (myconfigdir, mydownloaddir, movies)
+Change directory mappings as appropriate (delugeconfig, torrents)
 
 notes
 =====
@@ -32,10 +31,10 @@ notes
 * You must map a torrents directory, no torrents inside container
 * If you want it to restart on reboot, add --restart=always
 * If you leave the DNS out, your local dns servers will be used.  Not good for privacy.
-* The NET_ADMIN capability is needed to create the TUN devise
+* The NET_ADMIN capability is needed to create the TUN device
 * The host subnet needs to be in CIDR notation.   Try the following(assuming your host interface is eth0):
 
-    
+
     ip -o -f inet addr show | grep eth0 | awk '{ print $4;} '
 
 
@@ -44,6 +43,6 @@ notes
 
     head -n 100 /dev/urandom | md5sum | tr -d " -"
     
-    
+
 * PIA_GATEWAY is just a pia vpn hostname.  (ca.privateinternetaccess.com, nl.privateinternetaccess.com, etc)
 * After running for the first time, setup deluge so all torrents begin with /torrents
