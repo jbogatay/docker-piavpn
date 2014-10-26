@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sv start openvpn || exit 1
+sleep 5
+
+# start up dante server
+exec /usr/sbin/danted -f /etc/sockd.conf

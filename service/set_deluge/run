@@ -1,0 +1,13 @@
+#! /bin/bash
+
+sv start openvpn || exit 1
+sv start deluged || exit 1
+sv start deluge-web || exit 1
+sleep 5
+
+while true
+do
+  /app/set_deluge_port 2>&1 || exit 1
+  sleep 55m
+done
+

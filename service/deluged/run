@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sv start openvpn || exit 1
+sleep 5
+
+exec su torrents -c "/usr/bin/deluged -c /app/deluge -d --loglevel=info"

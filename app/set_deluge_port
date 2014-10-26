@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# Get PIA user/pass
+USERNAME=`head -n 1 /etc/openvpn/pw`
+PASSWORD=`head -n 2 /etc/openvpn/pw | tail -1`
+DEVICE=tun0
+CLIENTID=`cat /etc/openvpn/pia_client`
+
+# Get tun ip address
+LOCAL_IP=`ifconfig $DEVICE | grep 'inet addr:' | cut -d: -f2| cut -d' ' -f1`
+
+# Get the port number for the forwarded port
+PORT=`curl -s -d "user=$USERNAME&pass=$PASSWORD&client_id=$CLIENTID&local_ip=$LOCAL_IP" https://www.privateinternetaccess.com/vpninfo/port_forward_assignment | head -1 | grep -Po "[0-9]*"`
+
+echo "PORT=${PORT}"
+if [[ $PORT =~ ^-?[0-9]+$ ]] 
+then
+  echo [set-deluge-port] Local IP=$LOCAL_IP, Port=$PORT, Client ID=$CLIENTID
+  deluge-console -c /app/deluge "config --set random_port False"
+  deluge-console -c /app/deluge "config --set listen_ports ($PORT,$PORT)"
+  deluge-console -c /app/deluge "config --set listen_interface $LOCAL_IP"
+else
+  echo ERROR: Port $PORT is not an integer
+  exit 1
+fi
+
+exit 0
+

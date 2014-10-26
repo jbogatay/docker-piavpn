@@ -1,0 +1,10 @@
+#! /bin/bash
+
+while true
+do
+  sleep 24h
+  sv restart openvpn
+  sleep 5s
+  /app/set_deluge_port
+done
+
