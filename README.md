@@ -16,7 +16,7 @@ Complete run command with all options
         -e HOST_SUBNET=192.168.1.0/24 \
         -e PIA_USER=<user> \
         -e PIA_PASSWORD=<password> \
-        -e PIA_CLENT=<optionalpiaclient> \
+        -e PIA_CLIENT=<optionalpiaclient> \
         -e PIA_GATEWAY=piavpnaddress.com \        
         jbogatay/piavpn
 

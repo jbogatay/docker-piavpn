@@ -35,13 +35,13 @@ if [ ! -f /app/runonce ]; then
 	
 	# setup pia client
 	if [ ! -f /etc/openvpn/pia_client ]; then
-		if [ -z "${PIA_CLENT}" ]; then
+		if [ -z "${PIA_CLIENT}" ]; then
 	  	client_id=`head -n 100 /dev/urandom | md5sum | tr -d " -"`
 	  	echo "[info] PIA client set to $client_id"
 	  	echo "$client_id" > /etc/openvpn/pia_client
 	  else
 	  	echo "[info] using environment pia client id"
-	  	echo "${PIA_CLENT}" > /etc/openvpn/pia_client
+	  	echo "${PIA_CLIENT}" > /etc/openvpn/pia_client
 	  fi
 	else
 	  echo "[notice] using existing pia client id"
