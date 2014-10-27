@@ -2,8 +2,8 @@
 set -e
 
 # check env variables
-[ ! -d /torrents ] && echo "[crit] torrent directory not moutned (-v /yourtorrentdir:/torrents )" && exit 1
-[ ! -d /app/deluge ] && echo "[crit] deluge config directory not moutned (-v /yourdelugedir:/app/deluge )" && exit 1
+[ ! -d /torrents ] && echo "[crit] torrent directory not mounted (-v /yourtorrentdir:/torrents )" && exit 1
+[ ! -d /app/deluge ] && echo "[crit] deluge config directory not mounted (-v /yourdelugedir:/app/deluge )" && exit 1
 
 # create the tun device
 [ -d /dev/net ] || mkdir -p /dev/net
