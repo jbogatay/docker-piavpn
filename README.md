@@ -32,12 +32,7 @@ notes
 * If you want it to restart on reboot, add --restart=always
 * If you leave the DNS out, your local dns servers will be used.  Not good for privacy.
 * The NET_ADMIN capability is needed to create the TUN device
-* The host subnet needs to be in CIDR notation.   Try the following(assuming your host interface is eth0):
-
-
-    ip -o -f inet addr show | grep eth0 | awk '{ print $4;} '
-
-
+* The host subnet needs to be in CIDR notation.   For example if your host network is 192.168.1.x with a netmask of 255.255.255.0, then HOST_SUBNET=192.168.1.0/24
 * The PIA_CLIENT is optional, but if you generate one yourself port mappings will be preserved between cold starts.   Here is one way to generate a PIA_CLIENT.
 
 
