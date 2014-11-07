@@ -10,7 +10,7 @@ Complete run command with all options
         --dns=8.8.8.8 \
         --cap-add=NET_ADMIN \    
         -v /mytorrentdir:/torrents \
-        -v /mydelugeconfigdir:/config/deluge \
+        -v /mydelugeconfigdir:/app/deluge \
         -v /etc/localtime:/etc/localtime:ro \
         -e DELUGE_UID=500 -e DELUGE_GID=500 \
         -e HOST_SUBNET=192.168.1.0/24 \
